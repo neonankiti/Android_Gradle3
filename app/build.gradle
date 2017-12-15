@@ -39,6 +39,9 @@ android {
             // for integration such as distribution to QA.
             versionNameSuffix "-staging"
             applicationIdSuffix ".staging"
+            // When gradle couldn't find out the matching dependencies in any other modules.
+            // We can specify which one to pick up for each dependencies.
+            matchingFallbacks = ['debug']
         }
     }
     productFlavors {
@@ -53,10 +56,12 @@ android {
         us {
             dimension "applicationId"
             applicationId "com.bison.sampleapp"
+            // matchingFallbacks = ['the flavor type that other modules have']
         }
         japan {
             dimension "applicationId"
             applicationId "jp.co.bison.sampleapp"
+            // matchingFallbacks = ['the flavor type that other modules have']
         }
     }
 }
@@ -69,4 +74,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    compile project(':bison')
 }

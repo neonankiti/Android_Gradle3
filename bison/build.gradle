@@ -3,8 +3,8 @@ apply plugin: 'com.android.feature'
 android {
     compileSdkVersion 26
 
-
-    baseFeature true
+    // This requires whenever you have flavor in your module.
+    // flavorDimensions "applicationId"
 
     defaultConfig {
         minSdkVersion 15
@@ -21,6 +21,20 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+        }
+        // You don't have to use
+        // staging{
+        // }
+    }
+
+    productFlavors {
+        // If you don't need any product flavor for dependencies module like this,
+        // You just remove this, and then module build variant would be debug or release.
+        // us {
+        // }
+        // japan {
+        // }
     }
 
 }
